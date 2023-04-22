@@ -1,3 +1,41 @@
+/*Полина, понимаю и трезво оцениваю, что это "провал" в том смысле, что код не работает. Но для меня это своего рода прогресс, так кая мне удалось немного понять логику написания, которая мне так не давалась.
+Очень прошу тебя записать по возможности скрин-каст, с разбором ошибок этого "творения"*/
+
+const forecasts = ["Ты поймешь JS!",
+    "Тебя ожидают хорошие выходные.",
+    "Летом тебя ждёт путешествие мечты!",
+    "Сегодня ты выспишься.",
+    "Сегодня у тебя удачный день!"
+]
+const createForecast = document.querySelector('.forecast-btn');
+const forecastContainer = document.querySelector('.forecasts');
+const mainForecast = document.querySelector('h1');
+const probability = document.querySelector('current-forecast').document.querySelector('p');
+
+createForecast.addEventListener('click', sendForecast);
+
+function sendForecast() {
+    const forecastText = forecasts[Math.floor(Math.random() * forecasts.length)];
+
+    const newForecast = document.createElement('div');
+    newForecast.classList.add('.text');
+    newForecast.textContent = forecastText;
+    mainForecast.textContent = forecastText;
+    const probabilityContent = getPercent(0, 100);
+
+
+    if (sendForecast == 'click') {
+        forecastContainer.prepend(mainForecast);
+        probability.textContent = "Вероятность: " + probabilityContent + "%";
+    }
+
+}
+
+sendForecast()
+
+function getPercent(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 /* Генерация предсказания должна происходить при клике на кнопку «предсказать судьбу» */
 
 /* Заранее заготовь 3-5 предсказаний и в зависимости от того, как лягут карты судьбы (или что скажет Math.random) показывай их пользователю */
